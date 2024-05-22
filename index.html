@@ -5,18 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play Audio</title>
 </head>
-<body onload="pageLoaded()">
-    <p>This page will automatically play audio.</p>
-    <audio id="audio" src="VandeMataram.mp3"></audio>
+<body>
+    <p>This page will automatically play audio if allowed by the browser. Otherwise, click the button to play the audio.</p>
+    <audio id="audio" src="VandeMataram.mp3" controls></audio>
+    <button id="playButton" onclick="playAudio()">Play Audio</button>
+
     <script>
-        function pageLoaded() {
-            // Speed up the audio 3x so the test doesn't take 10 seconds.
+        function playAudio() {
             var audio = document.getElementById("audio");
-            audio.playbackRate = 3;
             audio.play().catch(function(error) {
                 console.log("Playback failed: " + error);
             });
         }
+
+        function pageLoaded() {
+            var audio = document.getElementById("audio");
+            audio.playbackRate = 3;
+            audio.play().then(() => {
+                document.getElementById("playButton").style.display = 'none';
+            }).catch(function(error) {
+                console.log("Autoplay failed: " + error);
+                document.getElementById("playButton").style.display = 'block';
+            });
+        }
+
+        window.onload = pageLoaded;
     </script>
 </body>
 </html>
