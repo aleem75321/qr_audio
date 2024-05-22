@@ -1,27 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QR Code Audio Paly</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <title>Autoplay Audio</title>
 </head>
-
 <body>
-  <div class="content-container">
-    <div class="container">
-      <div class="audio-section"> 
-        <h3>VandeMataram.mp3</h3>
-        <iframe src="VandeMataram.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
-        <audio autoplay loop  id="playAudio">
-          <source src="VandeMataram.mp3">
-        </audio>
-      </div>
-        
-      </div>
-    </div>
+  <audio id="myAudio" controls autoplay muted>
+    <source src="VandeMataram.mp3" type="audio/mpeg">
+  </audio>
+  <p>This page will automatically play audio. The audio is muted by default.</p>
 </body>
-
 </html>
